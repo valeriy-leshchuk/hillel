@@ -4,17 +4,17 @@ import java.util.Objects;
 
 public class Client
 {
-    private String phoneNumber;
-    private String clientName;
+    private String name_;
+    private String phoneNumber_;
 
-    public Client (String phoneNumber, String clientName)
+    public Client(String phoneNumber, String clientName)
     {
-        this.phoneNumber = phoneNumber;
-        this.clientName = clientName;
+        phoneNumber_ = phoneNumber;
+        name_ = clientName;
     }
 
     @Override
-    public boolean equals (Object o)
+    public boolean equals(Object o)
     {
         if (this == o)
         {
@@ -25,28 +25,28 @@ public class Client
             return false;
         }
         Client client = (Client) o;
-        return Objects.equals(getPhoneNumber(), client.getPhoneNumber()) && Objects.equals(getClientName(), client.getClientName());
+        return Objects.equals(getPhoneNumber(), client.getPhoneNumber()) && Objects.equals(getName(), client.getName());
     }
 
     @Override
-    public int hashCode ()
+    public int hashCode()
     {
-        return Objects.hash(getPhoneNumber(), getClientName());
+        return Objects.hash(getPhoneNumber(), getName());
     }
 
-    public String getClientName ()
+    public String getName()
     {
-        return clientName;
+        return name_;
     }
 
     public String getPhoneNumber()
     {
-        return phoneNumber;
+        return phoneNumber_;
     }
 
     @Override
-    public String toString ()
+    public String toString()
     {
-        return "Client{" + "phoneNumber='" + phoneNumber + '\'' + ", clientName='" + clientName + '\'' + '}';
+        return "Client: [" + "name_=" + name_ + ", phoneNumber_=" + phoneNumber_ + ']';
     }
 }

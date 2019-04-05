@@ -4,43 +4,40 @@ import classwork.hotel.demo.client.Client;
 
 public class Room
 {
-    private double square;
-    private int places;
-    private Double price;
-    private boolean occupied;
-    private Client occupiedBy;
+    private double square_;
+    private int places_;
+    private boolean occupied_;
+    private Client occupiedBy_;
 
-    public Room (double square, int places)
+    private static double DEF_SQUARE = 1;
+    private static int DEF_PLACES = 1;
+
+    public Room(double square, int places)
     {
-        this.square = square;
-        this.places = places;
+        square_ = square;
+        places_ = places;
     }
 
-    public boolean book (Client client)
+    public Room()
     {
-        if (occupied)
+        square_ = DEF_SQUARE;
+        places_ = DEF_PLACES;
+    }
+
+    public boolean book(Client client)
+    {
+        if (occupied_)
         {
             return false;
         }
-        occupiedBy = client;
-        occupied = true;
+        occupiedBy_ = client;
+        occupied_ = true;
         return true;
     }
 
-    public boolean release ()
-    {
-        if (occupied)
-        {
-            occupied=false;
-            occupiedBy=null;
-            return true;
-        }
-        return false;
-    }
-
     @Override
-    public String toString ()
+    public String toString()
     {
-        return "Room{" + "square=" + square + ", places=" + places + ", price=" + price + ", occupied=" + occupied + ", occupiedBy=" + occupiedBy + '}';
+        return "Room: [" + "square=" + square_ + ", places=" + places_ + ", occupied=" + occupied_ + ", occupiedBy=" + occupiedBy_ + ']';
     }
 }
