@@ -1,4 +1,4 @@
-package hw.five.six.three;
+package hw.six.three;
 
 import java.util.*;
 

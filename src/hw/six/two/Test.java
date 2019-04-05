@@ -1,4 +1,4 @@
-package hw.five.six.two;
+package hw.six.two;
 
 import java.util.ArrayList;
 import java.util.List;

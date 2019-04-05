@@ -1,4 +1,4 @@
-package hw.five.six.one;
+package hw.six.one;
 
 import java.util.List;
 
