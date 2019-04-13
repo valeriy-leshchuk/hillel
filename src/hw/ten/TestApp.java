@@ -1,6 +1,7 @@
 package hw.ten;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -48,8 +49,16 @@ public class TestApp
         list.add("s");
         System.out.println(ArrayAndListUtils.findMaxElementInListWithinRange(list, 2, 4));
 
-        String[] array = new String[]{"a","b","c","d","e","f"};
-        System.out.println(Arrays.toString(ArrayAndListUtils.swapElements(array, 2,5)));
+        String[] array = new String[]{"a", "b", "c", "d", "e", "f"};
+        System.out.println(Arrays.toString(ArrayAndListUtils.swapElements(array, 2, 5)));
 
+        //4
+        System.out.println("\n\n#4");
+        DataStructure ds = new DataStructure();
+        Iterator<Integer> it = ds.iterator();
+        while (it.hasNext())
+        {
+            System.out.println(it.next());
+        }
     }
 }
