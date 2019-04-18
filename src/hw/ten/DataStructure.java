@@ -1,5 +1,6 @@
 package hw.ten;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 public class DataStructure implements Iterable<Integer>
@@ -59,6 +60,12 @@ public class DataStructure implements Iterable<Integer>
                 return arrayOfInts[posOfNext];
             }
             return null;
+        }
+
+        @Override
+        public void remove()
+        {
+            throw new ConcurrentModificationException();
         }
     }
 }
