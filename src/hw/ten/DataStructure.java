@@ -29,24 +29,29 @@ public class DataStructure implements Iterable<Integer>
 
     class EvenIterator implements DataStructureIterator
     {
-        private int currentPos = 0;
-        private int posOfNext = 0;
-        private boolean endReached = false;
+        private int currentPos_ = 0;
+        private int posOfNext_ = 0;
+        private boolean endReached_ = false;
+        private int[] initArrayOfInts_ = arrayOfInts;
 
         @Override
         public boolean hasNext()
         {
-            if (!endReached)
+            if (initArrayOfInts_ != arrayOfInts)
             {
-                for (int i = currentPos + 1; i < SIZE - 1; i++)
+                throw new ConcurrentModificationException("Content was changed.");
+            }
+            if (!endReached_)
+            {
+                for (int i = currentPos_ + 1; i < SIZE; i++)
                 {
                     if (arrayOfInts[i] % 2 == 0)
                     {
-                        posOfNext = i;
+                        posOfNext_ = i;
                         return true;
                     }
                 }
-                endReached = true;
+                endReached_ = true;
             }
             return false;
         }
@@ -56,8 +61,8 @@ public class DataStructure implements Iterable<Integer>
         {
             if (hasNext())
             {
-                currentPos = posOfNext;
-                return arrayOfInts[posOfNext];
+                currentPos_ = posOfNext_;
+                return arrayOfInts[posOfNext_];
             }
             return null;
         }
