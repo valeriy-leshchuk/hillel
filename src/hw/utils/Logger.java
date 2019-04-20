@@ -29,6 +29,17 @@ public abstract class Logger
         warning(expr ? "true" : "false");
     }
 
+    public static void delimiter(int numOfRows)
+    {
+        if (numOfRows >=0)
+        {
+            for (int i = numOfRows; i > 0; i--)
+            {
+                System.out.println();
+            }
+        }
+    }
+
     private static String currentTime()
     {
         return dateFormat_.format(date_);
