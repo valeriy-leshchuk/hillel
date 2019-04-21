@@ -1,4 +1,4 @@
-package classwork.apr21;
+package classwork.apr21.sockets;
 
 import java.io.IOException;
 
