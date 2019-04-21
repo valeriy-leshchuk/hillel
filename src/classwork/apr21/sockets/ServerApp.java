@@ -16,11 +16,11 @@ public class ServerApp
         }
         catch (BindException ex)
         {
-            Logger.warning("Address is already in use: " + AppConstants.APP_DEMO_PORT);
+            Logger.getLogger().warning("Address is already in use: " + AppConstants.APP_DEMO_PORT);
         }
         catch (IOException ex)
         {
-            Logger.warning("Server app error");
+            Logger.getLogger().warning("Server app error");
             ex.printStackTrace();
         }
     }

@@ -28,7 +28,7 @@ public class Client implements IClient
             String userText = null;
             while (!AppConstants.EXIT_COMMAND.equals(userText))
             {
-                Logger.info("Enter message:");
+                Logger.getLogger().info("Enter message:");
                 userText = scanner.nextLine();
                 bw.write(userText);
                 bw.newLine();

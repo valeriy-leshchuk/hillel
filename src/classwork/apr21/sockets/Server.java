@@ -23,7 +23,7 @@ public class Server implements IServer
 
         )
         {
-            Logger.info("Server started on port " + serverPort_);
+            Logger.getLogger().info("Server started on port " + serverPort_);
             try (Socket socket = serverSocket.accept();
                  BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))
@@ -32,7 +32,7 @@ public class Server implements IServer
                 String clientMessage = null;
                 while (!AppConstants.EXIT_COMMAND.equals(clientMessage = br.readLine()))
                 {
-                    Logger.info("Message from client: " + clientMessage);
+                    Logger.getLogger().info("Message from client: " + clientMessage);
                     bw.write("Msg '" + clientMessage + "' received.");
                     bw.newLine();
                     bw.flush();

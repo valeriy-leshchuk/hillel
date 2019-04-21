@@ -13,6 +13,6 @@ public class InfoMailListener extends AbstractMailListener implements IMailListe
     @Override
     public void processMail(Mail mail)
     {
-        Logger.info("Email was processed by info listener with id " + id_ + ". " + mail.toString());
+        Logger.getLogger().info("Email was processed by info listener with id " + id_ + ". " + mail.toString());
     }
 }

@@ -22,22 +22,22 @@ public class MailApp
 
         MailPublisher mp = new MailPublisher();
 
-        Logger.delimiter(3);
-        Logger.info("Subsribing one listener for each type:");
+        Logger.getLogger().delimiter(3);
+        Logger.getLogger().info("Subsribing one listener for each type:");
         mp.subscribe(MailType.INFO, infoListener1);
         mp.subscribe(MailType.ERROR, errorListener1);
         mp.notify(infoMail1);
         mp.notify(errorMail1);
 
-        Logger.delimiter(3);
-        Logger.info("Subsribing one more listener for each type. Expect each mail be processed by two listeners:");
+        Logger.getLogger().delimiter(3);
+        Logger.getLogger().info("Subsribing one more listener for each type. Expect each mail be processed by two listeners:");
         mp.subscribe(MailType.INFO, infoListener2);
         mp.subscribe(MailType.ERROR, errorListener2);
         mp.notify(infoMail1);
         mp.notify(errorMail1);
 
-        Logger.delimiter(3);
-        Logger.info("Leaving one listener for each type:");
+        Logger.getLogger().delimiter(3);
+        Logger.getLogger().info("Leaving one listener for each type:");
         mp.unsubscribe(MailType.INFO, infoListener1);
         mp.unsubscribe(MailType.ERROR, errorListener1);
         mp.notify(infoMail1);

@@ -16,11 +16,11 @@ public class ClientApp
         }
         catch (ConnectException ex)
         {
-            Logger.warning("There is no server at destination host/port");
+            Logger.getLogger().warning("There is no server at destination host/port");
         }
         catch (IOException ex)
         {
-            Logger.warning("Could not connect");
+            Logger.getLogger().warning("Could not connect");
             ex.printStackTrace();
         }
     }

@@ -73,9 +73,9 @@ public class PrototypeDemo
     {
         A a = new A(1, new B());
         A aClone = a.createCopy();
-        Logger.info(aClone.getbVar() == a.getbVar() ? "true" : "false");
+        Logger.getLogger().info(aClone.getbVar() == a.getbVar() ? "true" : "false");
         a.getbVar().setVal("test2");
-        Logger.info(aClone.getbVar() == a.getbVar() ? "true" : "false");
+        Logger.getLogger().info(aClone.getbVar() == a.getbVar() ? "true" : "false");
 
         a.createCopy();
         a.createCopyClonable();

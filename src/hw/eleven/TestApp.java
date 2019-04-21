@@ -12,13 +12,13 @@ public class TestApp
         //1
         {
             list.writeContentToFile(filePath);
-            Logger.info("Writing to file is done.");
+            Logger.getLogger().info("Writing to file is done.");
         }
 
         //2
         {
             list.readContentFromFile(filePath);
-            Logger.info(list.getList().toString());
+            Logger.getLogger().info(list.getList().toString());
         }
     }
 }

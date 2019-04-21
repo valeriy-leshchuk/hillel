@@ -6,6 +6,6 @@ public interface IVisualComponent
 {
     default void paint()
     {
-        Logger.info("Paint was invoked for " + this.getClass().getSimpleName());
+        Logger.getLogger().info("Paint was invoked for " + this.getClass().getSimpleName());
     }
 }

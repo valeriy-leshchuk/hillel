@@ -69,7 +69,7 @@ public class ListOfNumbers
 
             while ((line = br.readLine()) != null && !line.isEmpty())
             {
-                Logger.info("Processing line [" + line + "]");
+                Logger.getLogger().info("Processing line [" + line + "]");
                 if (linesProcessed == SIZE)
                 {
                     throw new EOFWasNotReachedException();
@@ -87,7 +87,7 @@ public class ListOfNumbers
             }
             if (linesProcessed < SIZE)
             {
-                Logger.warning("File was fully read but list was not fully filled.");
+                Logger.getLogger().warning("File was fully read but list was not fully filled.");
             }
         }
         finally
@@ -96,7 +96,7 @@ public class ListOfNumbers
         }
 
         list_ = tempList;
-        Logger.info("Done. List is filled.");
+        Logger.getLogger().info("Done. List is filled.");
     }
 
     public List<Integer> getList()

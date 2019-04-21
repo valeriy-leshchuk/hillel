@@ -7,6 +7,6 @@ public class VideoCodec implements ICodec
     @Override
     public void format(FileFormat format)
     {
-        Logger.info("This is video codec of file  " + format);
+        Logger.getLogger().info("This is video codec of file  " + format);
     }
 }

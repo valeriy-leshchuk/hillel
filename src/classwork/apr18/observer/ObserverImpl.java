@@ -7,6 +7,6 @@ public class ObserverImpl implements IObserver
     @Override
     public void react(Event event, Object data)
     {
-        Logger.info("Event " + event.toString() + " was triggered on ");
+        Logger.getLogger().info("Event " + event.toString() + " was triggered on ");
     }
 }

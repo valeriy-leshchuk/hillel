@@ -7,6 +7,6 @@ public class TextCodec implements ICodec
     @Override
     public void format(FileFormat format)
     {
-        Logger.info("This is text codec of file  " + format);
+        Logger.getLogger().info("This is text codec of file  " + format);
     }
 }
