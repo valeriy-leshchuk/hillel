@@ -6,7 +6,7 @@ import java.util.Date;
 public final class Logger
 {
     private static Date date_ = new Date();
-    private static final String DEFAULT_DATE_TIME_FORMAT = "[dd-MMM-yyyy HH:mm:ss:sss a]";
+    private static final String DEFAULT_DATE_TIME_FORMAT = "[dd-MMM-yyyy HH:mm:ss:sss Z]";
     private static final SimpleDateFormat dateFormat_ = new SimpleDateFormat(DEFAULT_DATE_TIME_FORMAT);
 
     private static Logger instance_ = new Logger();
