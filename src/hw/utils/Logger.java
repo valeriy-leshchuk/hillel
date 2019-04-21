@@ -5,7 +5,6 @@ import java.util.Date;
 
 public final class Logger
 {
-    private static Date date_ = new Date();
     private static final String DEFAULT_DATE_TIME_FORMAT = "[dd-MMM-yyyy HH:mm:ss:sss Z]";
     private static final SimpleDateFormat dateFormat_ = new SimpleDateFormat(DEFAULT_DATE_TIME_FORMAT);
 
@@ -83,6 +82,6 @@ public final class Logger
 
     private static String currentTime()
     {
-        return dateFormat_.format(date_);
+        return dateFormat_.format(new Date());
     }
 }
