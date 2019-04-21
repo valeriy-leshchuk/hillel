@@ -3,41 +3,82 @@ package hw.utils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public abstract class Logger
+public final class Logger
 {
     private static Date date_ = new Date();
     private static final String DEFAULT_DATE_TIME_FORMAT = "[dd-MMM-yyyy HH:mm:ss:sss a]";
     private static final SimpleDateFormat dateFormat_ = new SimpleDateFormat(DEFAULT_DATE_TIME_FORMAT);
 
-    public static void info(String str)
+    private static Logger instance_ = new Logger();
+
+    private Logger()
+    {}
+
+    public static Logger getLogger()
+    {
+        return instance_;
+    }
+
+    public Logger info(String str)
     {
         System.out.println(currentTime() + " info: " + str);
+        return instance_;
     }
 
-    public static void info(Boolean expr)
+    public Logger info(Boolean expr)
     {
-        info(expr ? "true" : "false");
+        return info(expr ? "true" : "false");
     }
 
-    public static void warning(String str)
+    public Logger warning(String str)
     {
-        System.out.println(currentTime() + " info: " + str);
+        System.out.println(currentTime() + " !!! warning: " + str);
+        return instance_;
     }
 
-    public static void warning(Boolean expr)
+    public Logger warning(Boolean expr)
     {
-        warning(expr ? "true" : "false");
+        return warning(expr ? "true" : "false");
     }
 
-    public static void delimiter(int numOfRows)
+    public Logger error(String str)
     {
-        if (numOfRows >=0)
-        {
-            for (int i = numOfRows; i > 0; i--)
-            {
-                System.out.println();
-            }
-        }
+        System.err.println(currentTime() + " * error: " + str);
+        return instance_;
+    }
+
+    public Logger error(Boolean expr)
+    {
+        return error(expr ? "true" : "false");
+    }
+
+    public Logger exception(Exception ex)
+    {
+        System.err.println(currentTime() + " ***** EXCEPTION: ");
+        ex.printStackTrace();
+        System.err.println(getDelimiter());
+        return instance_;
+    }
+
+    public Logger delimiter()
+    {
+        return delimiter(1);
+    }
+
+    public Logger delimiter(int numOfRows)
+    {
+        System.out.println(new String(new char[numOfRows - 1]).replace("\0", "\n"));
+        return instance_;
+    }
+
+    private String getDelimiter()
+    {
+        return getDelimiter(1);
+    }
+
+    private String getDelimiter(int numOfRows)
+    {
+        return new String(new char[numOfRows - 1]).replace("\0", "\n");
     }
 
     private static String currentTime()
