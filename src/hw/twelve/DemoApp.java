@@ -2,6 +2,8 @@ package hw.twelve;
 
 import hw.twelve.components.ICheckbox;
 import hw.twelve.components.ITooltip;
+import hw.twelve.factory.MacOsXCompCompFactory;
+import hw.twelve.factory.WinCompCompFactory;
 
 public class DemoApp
 {
