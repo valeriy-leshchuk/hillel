@@ -2,14 +2,13 @@ package hw.fifteen;
 
 import lombok.*;
 
-@Getter
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
 @Builder
 public class Student
 {
-    @NonNull private String name;
-    private double age;
+    @NonNull @Getter private String name;
+    @Getter double age;
     private int mark;
 }
