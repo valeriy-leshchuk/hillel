@@ -12,29 +12,34 @@ public final class ReflectionUtils
         return Arrays.stream(Modifier.toString(member.getModifiers()).split(" ")).collect(Collectors.toSet());
     }
 
-    public static Set<String> getConstructorParamsAsSet(Constructor constructor)
+    public static Set<String> getParamsAsSet(Member member)
     {
-        return Arrays.stream(constructor.getParameterTypes()).map(Class::getSimpleName).collect(Collectors.toSet());
+        if (member instanceof Constructor)
+        {
+            return Arrays.stream(((Constructor) member).getParameterTypes()).map(Class::getSimpleName).collect(Collectors.toSet());
+        }
+        if (member instanceof Method)
+        {
+            return Arrays.stream(((Method) member).getParameterTypes()).map(Class::getSimpleName).collect(Collectors.toSet());
+        }
+        return null;
     }
 
-    public static Set<String> getMethodParamsAsSet(Method method)
+    public static Set<String> getAnnotationsAsSet(Member member)
     {
-        return Arrays.stream(method.getParameterTypes()).map(Class::getSimpleName).collect(Collectors.toSet());
-    }
-
-    public static Set<String> getConstructorAnnotationsAsSet(Constructor constructor)
-    {
-        return Arrays.stream(constructor.getAnnotations()).map(constr -> constr.annotationType().getSimpleName()).collect(Collectors.toSet());
-    }
-
-    public static Set<String> getMethodAnnotationsAsSet(Method method)
-    {
-        return Arrays.stream(method.getAnnotations()).map(constr -> constr.annotationType().getSimpleName()).collect(Collectors.toSet());
-    }
-
-    public static Set<String> getFieldAnnotationsAsSet(Field field)
-    {
-        return Arrays.stream(field.getAnnotations()).map(annotation -> annotation.annotationType().getSimpleName()).collect(Collectors.toSet());
+        if (member instanceof Constructor)
+        {
+            return Arrays.stream(((Constructor) member).getAnnotations()).map(mem -> mem.annotationType().getSimpleName()).collect(Collectors.toSet());
+        }
+        if (member instanceof Method)
+        {
+            return Arrays.stream(((Method) member).getAnnotations()).map(mem -> mem.annotationType().getSimpleName()).collect(Collectors.toSet());
+        }
+        if (member instanceof Field)
+        {
+            return Arrays.stream(((Field) member).getAnnotations()).map(mem -> mem.annotationType().getSimpleName()).collect(Collectors.toSet());
+        }
+        return null;
     }
 
     private ReflectionUtils()

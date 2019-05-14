@@ -32,7 +32,7 @@ public interface ICodeAnalyzer
                     JSONObject jsonField = new JSONObject();
                     Set<String> modifiers = ReflectionUtils.getModifiersAsSet(field);
                     String name = field.getName();
-                    Set<String> annotations = ReflectionUtils.getFieldAnnotationsAsSet(field);
+                    Set<String> annotations = ReflectionUtils.getAnnotationsAsSet(field);
                     jsonField.put(JSON_MODIFIERS, modifiers).put(JSON_NAME, name).put(JSON_ANNOTATIONS, annotations);
                     fieldsJsonArray.put(jsonField);
                 }
@@ -44,8 +44,8 @@ public interface ICodeAnalyzer
                     JSONArray constructorsJsonArray = getOrCreateArray(json, JSON_CONSTRUCTORS);
                     JSONObject jsonConstr = new JSONObject();
                     Set<String> modifiers = ReflectionUtils.getModifiersAsSet(constructor);
-                    Set<String> params = ReflectionUtils.getConstructorParamsAsSet(constructor);
-                    Set<String> annotations = ReflectionUtils.getConstructorAnnotationsAsSet(constructor);
+                    Set<String> params = ReflectionUtils.getParamsAsSet(constructor);
+                    Set<String> annotations = ReflectionUtils.getAnnotationsAsSet(constructor);
                     jsonConstr.put(JSON_MODIFIERS, modifiers).put(JSON_PARAMS, params).put(JSON_ANNOTATIONS, annotations);
                     constructorsJsonArray.put(jsonConstr);
                 }
@@ -58,8 +58,8 @@ public interface ICodeAnalyzer
                     JSONObject jsonMethod = new JSONObject();
                     Set<String> modifiers = ReflectionUtils.getModifiersAsSet(method);
                     String name = method.getName();
-                    Set<String> params = ReflectionUtils.getMethodParamsAsSet(method);
-                    Set<String> annotations = ReflectionUtils.getMethodAnnotationsAsSet(method);
+                    Set<String> params = ReflectionUtils.getParamsAsSet(method);
+                    Set<String> annotations = ReflectionUtils.getAnnotationsAsSet(method);
                     jsonMethod.put(JSON_MODIFIERS, modifiers).put(JSON_NAME, name).put(JSON_PARAMS, params).put(JSON_ANNOTATIONS, annotations);
                     methodsJsonArray.put(jsonMethod);
                 }
