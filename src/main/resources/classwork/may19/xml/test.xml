@@ -1,0 +1,20 @@
+<UserInfo>
+	<User>
+		<Name>UserName</Name>
+		<Age>99</Age>
+		<Address>
+			<City>dp</City>
+			<Country>ua</Country>
+			<Misc code="12345" />
+		</Address>
+	</User>
+	<User>
+		<Name>UserName2</Name>
+		<Age>11</Age>
+		<Address>
+			<City>dp</City>
+			<Country>ua</Country>
+			<Misc code="12345" />
+		</Address>
+	</User>
+</UserInfo>
