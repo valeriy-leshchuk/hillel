@@ -1,6 +1,7 @@
 package hw.seventeen;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,6 +9,8 @@ import java.util.*;
 
 public class JsonApp
 {
+    private static final Logger logger = Logger.getLogger(TestObj.class);
+
     public static void main(String[] args) throws IOException
     {
         //read json to map
@@ -17,17 +20,16 @@ public class JsonApp
 
         //calculate sum of values in map
         Double sum = initMap.values().stream().mapToDouble(value -> value.doubleValue()).sum();
-        System.out.println("Sum of values of initial map is '" + sum + "'");
+        logger.info("Sum of values in initial map is '" + sum + "'");
 
         //create new map where values are multiplied by sum
-        System.out.println("\nMultiplied map (where each value is multiplied by '" + sum + "':");
         Map<String, Double> multipleidMap = new HashMap<>();
         initMap.entrySet().stream().forEach(entry -> multipleidMap.put(entry.getKey(), entry.getValue().doubleValue() * sum));
-        multipleidMap.entrySet().stream().forEach(System.out::println);
+        logger.info("Multiplied map (where each value is multiplied by '" + sum + "': " + multipleidMap);
 
         //count unique values in map
         long numOfDiffValues = initMap.values().stream().distinct().count();
-        System.out.println("\nNumber of different values is '" + numOfDiffValues + "'");
+        logger.info("Number of different values is '" + numOfDiffValues + "'");
 
         //generate list of 100k integer numbers; find min, max, unique values
         Random rand = new Random();
@@ -39,13 +41,12 @@ public class JsonApp
         int max = list.stream().mapToInt(i -> i).max().getAsInt();
         int min = list.stream().mapToInt(i -> i).min().getAsInt();
         long uniquesInList = list.stream().distinct().count();
-        System.out.println("\nList contains " + uniquesInList + " unique values in range [" + min + ";" + max + "]");
+        logger.info("List contains " + uniquesInList + " unique values in range [" + min + ";" + max + "]");
 
         //convert json to object and print it
         ObjectMapper om2 = new ObjectMapper();
         InputStream is2 = JsonApp.class.getResourceAsStream("test2.json");
         TestObj testObj = om2.readValue(is2, TestObj.class);
-        System.out.println(testObj.toString());
-
+        logger.info("Object has been created from json: " + testObj.toString());
     }
 }
