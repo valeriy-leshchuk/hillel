@@ -1,0 +1,10 @@
+<doc>
+	<tagOne>
+		<subTagOne>subTagOneValue</subTagOne>
+	</tagOne>
+	<tagTwo>
+		<subTagTwo>
+			<subSubTagTwo>subSubTwoValue</subSubTagTwo>
+		</subTagTwo>
+	</tagTwo>
+</doc>
