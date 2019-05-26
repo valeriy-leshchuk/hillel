@@ -16,11 +16,15 @@ public final class ReflectionUtils
     {
         if (member instanceof Constructor)
         {
-            return Arrays.stream(((Constructor) member).getParameterTypes()).map(Class::getSimpleName).collect(Collectors.toSet());
+            return Arrays.stream(((Constructor) member).getParameters())
+                .map(p->p.getType().getName() + " " + p.getName())
+                .collect(Collectors.toSet());
         }
         if (member instanceof Method)
         {
-            return Arrays.stream(((Method) member).getParameterTypes()).map(Class::getSimpleName).collect(Collectors.toSet());
+            return Arrays.stream(((Method) member).getParameters())
+                .map(p->p.getType().getSimpleName()+" "+p.getName())
+                .collect(Collectors.toSet());
         }
         return null;
     }
