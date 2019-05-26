@@ -1,26 +1,22 @@
 package classwork.may23.ui;
 
-import javax.swing.*;
-import java.awt.Dimension;
+import lombok.Builder;
 
+import javax.swing.*;
+
+@Builder
 public class Window extends JFrame
 {
-    public static void main(String[] args)
-    {
-        Window window = new Window();
-        //JMenuBar menuBar = new JMenuBar();
-        //window.setJMenuBar(menuBar);
-        //JMenu menu = new JMenu();
-        //JButton rectBut = new JButton("rect");
-        //JButton circBut = new JButton("rect");
-        //menu.add(rectBut);
-        //menuBar.add(circBut);
+    private String windowTitle;
+    private int windowHeight;
+    private int windowWidth;
 
-        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        window.setTitle("Visual editor");
-        window.add(new GraphicArea());
-        window.setSize(new Dimension(400, 150));
-        //window.setResizable(false);
-        window.setVisible(true);
+    public void init()
+    {
+        add(new GraphicArea());
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle(windowTitle);
+        setSize(windowWidth,windowHeight);
+        setVisible(true);
     }
 }
