@@ -1,0 +1,17 @@
+<workers>
+	<worker>
+		<login>worker1</login>
+		<position>simple worker</position>
+		<additionalInfo sinceYear="2018" company="Company 1" />
+	</worker>
+	<worker>
+		<login>worker2</login>
+		<position>director assistant</position>
+		<additionalInfo sinceYear="2018" company="Company 2" />
+	</worker>
+	<worker>
+		<login>worker3</login>
+		<position>manager</position>
+		<additionalInfo sinceYear="2015" company="Company 1" />
+	</worker>
+</workers>
