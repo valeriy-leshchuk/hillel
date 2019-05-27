@@ -14,13 +14,12 @@ import java.util.List;
 public class GraphicArea extends JComponent
 {
     private static final int gridStep = 20;
+    private static final InstantFigureProp instantFigureProp = InstantFigureProp.getInstance();
     private boolean isMousePressed = false;
     private int startX;
     private int startY;
     private int curX;
     private int curY;
-    private int endX;
-    private int endY;
 
     private List<Figure> figures = new LinkedList<>();
 
@@ -32,10 +31,10 @@ public class GraphicArea extends JComponent
             public void mousePressed(MouseEvent e)
             {
                 isMousePressed = true;
-                startX=e.getX();
+                startX = e.getX();
                 startY = e.getY();
-                curX=startX;
-                curY=startY;
+                curX = startX;
+                curY = startY;
                 repaint();
             }
 
@@ -43,9 +42,17 @@ public class GraphicArea extends JComponent
             public void mouseReleased(MouseEvent e)
             {
                 isMousePressed = false;
-                endX=e.getX();
-                endY=e.getY();
-                figures.add(new Rectangle(startX,startY,curX,curY));
+                curX = e.getX();
+                curY = e.getY();
+                switch (instantFigureProp.getShape())
+                {
+                    case Rectangle:
+                        figures.add(new Rectangle(startX, startY, curX, curY, instantFigureProp.isFilled()));
+                        break;
+                    case Oval:
+                        figures.add(new Oval(startX, startY, curX, curY, instantFigureProp.isFilled()));
+                        break;
+                }
                 repaint();
             }
         });
@@ -55,8 +62,8 @@ public class GraphicArea extends JComponent
             @Override
             public void mouseDragged(MouseEvent e)
             {
-                curX=e.getX();
-                curY=e.getY();
+                curX = e.getX();
+                curY = e.getY();
                 repaint();
             }
         });
@@ -65,15 +72,20 @@ public class GraphicArea extends JComponent
     @Override
     public void paint(Graphics g)
     {
-        log.debug("paint invoked");
         drawGrid(g);
         repaintAllFigures(g);
 
-
-        if(isMousePressed)
+        if (isMousePressed)
         {
-            //g.drawRect(Integer.min(startX,curX),Integer.min(startY,curY),Math.abs(curX-startX), Math.abs(curY-startY));
-            //g.fillRect(Integer.min(startX,curX),Integer.min(startY,curY),Math.abs(curX-startX), Math.abs(curY-startY));
+            switch (instantFigureProp.getShape())
+            {
+                case Rectangle:
+                    new Rectangle(startX,startY,curX,curY, instantFigureProp.isFilled()).draw(g);
+                    break;
+                case Oval:
+                    new Oval(startX,startY,curX,curY, instantFigureProp.isFilled()).draw(g);
+                    break;
+            }
         }
     }
 
@@ -87,7 +99,6 @@ public class GraphicArea extends JComponent
         {
             g.drawLine(i, 0, i, getHeight());
         }
-
     }
 
     private void repaintAllFigures(Graphics g)
@@ -97,5 +108,4 @@ public class GraphicArea extends JComponent
             figure.draw(g);
         }
     }
-
 }
