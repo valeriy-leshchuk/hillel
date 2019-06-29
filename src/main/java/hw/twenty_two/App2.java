@@ -18,6 +18,7 @@ public class App2
             }
             catch (InterruptedException ex)
             {
+                Thread.currentThread().interrupt();
                 log.error("Thread '" + Thread.currentThread().getName() + "' was interrupted.");
                 return;
             }
